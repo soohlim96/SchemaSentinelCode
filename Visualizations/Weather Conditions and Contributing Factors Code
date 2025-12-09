@@ -1,0 +1,35 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_parquet("schema_sentinel_last5yrs.parquet")
+
+# Weather Conditions and Collision Risk
+
+df['weather_clean'] = df['weather_condition'].replace({
+    "CLEAR": "Clear",
+    "RAIN": "Rain",
+    "SNOW": "Snow",
+    "FOG": "Fog"
+})
+
+counts = df['weather_clean'].value_counts()
+
+counts.plot(kind="bar")
+plt.title("Number of Crashes by Weather Condition")
+plt.xlabel("Weather Condition")
+plt.ylabel("Crash Count")
+plt.show()
+
+# Contributing Factors and Collision Risk
+
+df['factor_clean'] = df['contributing_factor_vehicle_1'].fillna("Unspecified")
+
+top_factors = df['factor_clean'].value_counts().head(10)
+
+top_factors.plot(kind="barh")
+plt.title("Top Contributing Factors in NYC Crashes")
+plt.xlabel("Crash Count")
+plt.ylabel("Contributing Factor")
+plt.show()
+
+

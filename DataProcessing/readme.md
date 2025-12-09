@@ -1,2 +1,2 @@
-## **DataProcessing**
+## **Data Processing**
 This folder contains scripts used to load, merge, and prepare the NYC Open Data collision datasets (Crashes, Vehicles, and People) using the shared collision_id key. These datasets provide temporal, geographic, behavioral, and demographic variables, and were limited to the last five years for analysis. Weather data from NOAA were also integrated to add temperature, precipitation, and visibility conditions. The combined data was cleaned, filtered, and transformed to support analysis of collisions in New York City.
